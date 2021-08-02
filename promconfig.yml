@@ -1,0 +1,22 @@
+global:
+  scrape_interval:     10s 
+  evaluation_interval: 10s 
+  
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093 
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  - job_name: 'csvserver'
+    scrape_interval: 10s
+    scrape_timeout: 10s
+    static_configs:
+      - targets: ['assesment:9300']
+        labels:
+          customer: csv
